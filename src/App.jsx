@@ -47,18 +47,21 @@ function App() {
 
   return (
     <>
-    <div>
-      <div className="container flex justify-center max-w-6xl mx-auto">
-        {pokemonData.map((pokemon) => (
-          <Cards
-            key={pokemon.id}
-            id={pokemon.id}
-            name={pokemon.name}
-            image={pokemon.image}
-          />
-        ))}
+      <div className="px-4">
+        <h1 className="mb-10 text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+          Memory Card Game
+        </h1>
+        <div className="container mx-auto flex gap-5  flex-wrap justify-center items-center content-center sm:max-w-xl md:max-w-lg lg:max-w-6xl">
+          {pokemonData.map((pokemon) => (
+            <Cards
+              key={pokemon.id}
+              id={pokemon.id}
+              name={pokemon.name}
+              image={pokemon.image}
+            />
+          ))}
+        </div>
       </div>
-    </div>
     </>
   );
 }

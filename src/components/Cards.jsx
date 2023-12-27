@@ -2,14 +2,14 @@ import PropTypes from "prop-types";
 
 const Cards = ({ id, name, image }) => {
   return (
-    <div key={id} className="justify-center max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
+    <div key={id} className="flex flex-1 items-center flex-col px-2 justify-center max-w-xs rounded-lg shadow-xl border-2 border-red-300">
       <img
         src={image}
         alt={name}
-        className="object-cover object-center w-full rounded-t-md h-70 dark:bg-gray-500"
+        className="object-cover object-center w-full rounded-t-ld h-40"
       />
-      <div className="flex flex-col p-6">
-        <p className="text-3xl text-center font-semibold">{name}</p>
+      <div className="flex flex-col p-5">
+        <p className="text-xl font-poppins uppercase text-center font-bold">{name}</p>
       </div>
     </div>
   );

@@ -9,6 +9,11 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      poppins: ["Poppins", 'sans-serif'],
+      cambo: ['Cambo', 'serif'],
+      roboto: ['Roboto', 'sans-serif']
+    },
     extend: {},
   },
   darkMode: "class",
