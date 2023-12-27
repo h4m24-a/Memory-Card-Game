@@ -48,10 +48,10 @@ function App() {
   return (
     <>
       <div className="px-4">
-        <h1 className="mb-10 text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        <h1 className="mb-10 text-2xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           Memory Card Game
         </h1>
-        <div className="container mx-auto flex gap-5  flex-wrap justify-center items-center content-center sm:max-w-xl md:max-w-lg lg:max-w-6xl">
+        <div className="container mx-auto flex flex-wrap gap-2 sm:max-w-xl md:max-w-lg lg:max-w-5xl">
           {pokemonData.map((pokemon) => (
             <Cards
               key={pokemon.id}
