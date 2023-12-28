@@ -1,11 +1,29 @@
 import React, { useEffect, useState } from "react";
-import Cards from "./components/Cards";
-
-
+import Card from "./components/Card";
+import Scoreboard from "./components/Scoreboard";
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [clickedCards, setClickedCards] = useState([])
+  const [cards, setCards] = useState([])
+
+
+
+  const handleCardClick = (cardId) => {
+    console.log('Card clicked:', cardId);
+    setScore(score + 1)
+  };
+
+
+
+  const shuffleCards = () => {
+
+  }
+
+
 
   useEffect(() => {
     setIsLoading(true);
@@ -48,16 +66,20 @@ function App() {
   return (
     <>
       <div className="px-4">
-        <h1 className="mb-10 font-rubik text-3xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        <h1 className="mb-4 font-rubik text-3xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           Memory Card Game
         </h1>
+        <div className="mb-8">
+          <Scoreboard score={score} bestScore={bestScore} />
+        </div>
         <div className="container mx-auto flex flex-wrap gap-7 justify-center flex-1 items-center sm:max-w-xl md:max-w-lg lg:max-w-6xl">
           {pokemonData.map((pokemon) => (
-            <Cards
+            <Card
               key={pokemon.id}
               id={pokemon.id}
               name={pokemon.name}
               image={pokemon.image}
+              onClick={() => handleCardClick(pokemon.id)}
             />
           ))}
         </div>

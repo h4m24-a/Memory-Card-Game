@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-const Cards = ({ id, name, image }) => {
+const Card = ({ id, name, image, onClick}) => {
   return (
-    <div key={id} className="p-5 flex-1 flex flex-col justify-center rounded-lg shadow-xl border border-black">
+    <div key={id} onClick={onClick} className="hover:bg-blue-400 active:bg-blue-600 focus:outline-none cursor-pointer focus:ring focus:ring-blue-300 p-5 flex-1 flex flex-col justify-center rounded-lg shadow-xl border border-black">
       <img
         src={image}
         alt={name}
@@ -15,10 +15,11 @@ const Cards = ({ id, name, image }) => {
   );
 };
 
-Cards.propTypes = {
+Card.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired
+  image: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
-export default Cards;
+export default Card;
