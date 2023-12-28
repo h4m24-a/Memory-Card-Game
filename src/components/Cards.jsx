@@ -6,7 +6,7 @@ const Cards = ({ id, name, image }) => {
       <img
         src={image}
         alt={name}
-        className="object-cover bg-yellow-300 rounded-2xl object-center max-w-full rounded-t-ld h-40"
+        className="object-cover bg-yellow-300 rounded-2xl object-center max-w-full rounded-t-ld h-50"
       />
       <div className="flex flex-col mt-6">
         <p className="text-2xl font-pokemonFont tracking-widest uppercase text-center text-zinc-900 ">{name}</p>
