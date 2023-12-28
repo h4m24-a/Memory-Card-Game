@@ -13,8 +13,16 @@ function App() {
 
 
   const handleCardClick = (cardId) => {
-    console.log('Card clicked:', cardId);
-    setScore(score + 1)
+    // Checking if card has been clicked
+    if(clickedCards.includes(cardId)) {
+      // Reset Game
+      setScore(0);
+      setClickedCards([]);
+    } else {
+      // Updating score by 1 and setting the clicked state of new card
+      setScore(prevScore => prevScore + 1);
+      setClickedCards((prevSelectedCard) => [...prevSelectedCard, cardId]);
+    }
   };
 
 
@@ -65,8 +73,8 @@ function App() {
 
   return (
     <>
-      <div className="px-4">
-        <h1 className="mb-4 font-rubik text-3xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+      <div className="px-10 py-0">
+        <h1 className="mb-4 font-rubik text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           Memory Card Game
         </h1>
         <div className="mb-8">
