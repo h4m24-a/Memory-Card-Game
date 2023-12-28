@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Cards from "./components/Cards";
 
-// import { NextUIProvider } from "@nextui-org/react";
+
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
@@ -48,10 +48,10 @@ function App() {
   return (
     <>
       <div className="px-4">
-        <h1 className="mb-10 text-2xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        <h1 className="mb-10  text-2xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           Memory Card Game
         </h1>
-        <div className="container mx-auto flex flex-wrap gap-2 sm:max-w-xl md:max-w-lg lg:max-w-5xl">
+        <div className="container mx-auto flex flex-wrap gap-7 justify-center flex-1 items-center sm:max-w-xl md:max-w-lg lg:max-w-6xl">
           {pokemonData.map((pokemon) => (
             <Cards
               key={pokemon.id}
