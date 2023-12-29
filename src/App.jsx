@@ -7,23 +7,22 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-  const [clickedCards, setClickedCards] = useState([])
-  const [cards, setCards] = useState([])
-
+  const [clickedCards, setClickedCards] = useState([]);
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
-    
+
     const fetchData = async () => {
       try {
         const response = await fetch(
           "https://pokeapi.co/api/v2/pokemon?limit=12"
-          );
-          const data = await response.json();
-          
-          const formattedData = await Promise.all(
-            data.results.map(async (pokemon) => {
-              const detailsResponse = await fetch(pokemon.url);
+        );
+        const data = await response.json();
+
+        const formattedData = await Promise.all(
+          data.results.map(async (pokemon) => {
+            const detailsResponse = await fetch(pokemon.url);
             const detailsData = await detailsResponse.json();
 
             return {
@@ -32,45 +31,49 @@ function App() {
               image: detailsData.sprites.front_default,
             };
           })
-          );
-          
-          setPokemonData(formattedData);
-        } catch (error) {
-          console.error("Error fetching Pokemon data:", error);
-        } finally {
-          setIsLoading(false);
-        }
-      };
-      
-      fetchData();
-    }, []);
-    
+        );
 
-
-    const handleCardClick = (cardId) => {
-      // Checking if card has been clicked
-      if(clickedCards.includes(cardId)) {
-        // Reset Game
-        setScore(0);
-        setClickedCards([]);
-      } else {
-        // Updating score by 1 and setting the clicked state of new card
-        setScore(prevScore => prevScore + 1);
-        setClickedCards((prevSelectedCard) => [...prevSelectedCard, cardId]);
+        setPokemonData(formattedData);
+      } catch (error) {
+        console.error("Error fetching Pokemon data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
-  
-  
-  
-    const shuffleCards = () => {
-  
+
+    fetchData();
+  }, []);
+
+
+
+  const handleCardClick = (cardId) => {
+    // Checking if card has been clicked
+    if (clickedCards.includes(cardId)) {
+      // Reset Game
+      setScore(0);
+      setClickedCards([]);
+    } else {
+      // Updating score by 1 and setting the clicked state of new card
+      setScore((prevScore) => prevScore + 1);
+      setClickedCards((prevSelectedCard) => [...prevSelectedCard, cardId]);
     }
+  };
 
 
+
+  const shuffleCards = () => {
+
+  };
+
+  
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center text-2xl items-center flex-col-reverse"> Loading...
+      <div className="flex justify-center w-16 h-16 border-4 border-dashed rounded-full animate-spin border-violet-400"></div>;
+    </div>
   }
+
+
 
   return (
     <>
