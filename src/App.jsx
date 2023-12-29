@@ -8,7 +8,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
-  const [cards, setCards] = useState([]);
+  // const [shuffle, setShuffle] = useState();
 
   useEffect(() => {
     setIsLoading(true);
@@ -46,6 +46,15 @@ function App() {
 
 
 
+  const shuffleCards = () => {
+    // Shuffles the pokemonData array
+    const shuffled = [...pokemonData].sort(() => Math.random() - 0.5);
+    setPokemonData(shuffled); // Updates the state with the shuffled array
+  };
+
+  
+
+
   const handleCardClick = (cardId) => {
     // Checking if card has been clicked
     if (clickedCards.includes(cardId)) {
@@ -53,17 +62,15 @@ function App() {
       setScore(0);
       setClickedCards([]);
     } else {
-      // Updating score by 1 and setting the clicked state of new card
+      // Updating score by 1, Shuffling cards and setting the clicked state of new card
       setScore((prevScore) => prevScore + 1);
       setClickedCards((prevSelectedCard) => [...prevSelectedCard, cardId]);
+      shuffleCards()
     }
   };
 
 
 
-  const shuffleCards = () => {
-
-  };
 
   
 
