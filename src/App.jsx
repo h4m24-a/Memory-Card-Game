@@ -8,7 +8,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
-  // const [shuffle, setShuffle] = useState();
+  // const [shuffle, setShuffle] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -61,6 +61,7 @@ function App() {
       // Reset Game
       setScore(0);
       setClickedCards([]);
+      shuffleCards()
     } else {
       // Updating score by 1, Shuffling cards and setting the clicked state of new card
       setScore((prevScore) => prevScore + 1);
@@ -70,6 +71,7 @@ function App() {
   };
 
 
+ 
 
 
   
@@ -91,7 +93,7 @@ function App() {
         <div className="px-2 flex justify-center sm:mb-6">
           <Scoreboard score={score} bestScore={bestScore} />
         </div>
-        <div className="container mx-auto flex flex-wrap gap-4  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
+        <div className="container mx-auto flex flex-wrap gap-4  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-7xl">
           {pokemonData.map((pokemon) => (
             <Card
               key={pokemon.id}
