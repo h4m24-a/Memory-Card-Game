@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 const Card = ({ id, name, image, onClick}) => {
   return (
-    <div key={id} onClick={onClick} className="p-4 flex-1 flex flex-col justify-center items-center rounded-lg shadow-xl border border-black hover:bg-blue-400 active:bg-blue-600 focus:outline-none cursor-pointer focus:ring focus:ring-blue-300 ">
+    <div key={id} onClick={onClick} className="p-4 flex flex-col justify-center items-center rounded-lg shadow-xl border border-black hover:bg-blue-400 active:bg-blue-600 focus:outline-none cursor-pointer focus:ring focus:ring-blue-300 lg:flex-1">
       <img
         src={image}
         alt={name}
