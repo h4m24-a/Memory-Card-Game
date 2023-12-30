@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
+import Button from "./components/Button";
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
@@ -9,15 +10,17 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
   const [shuffle, setShuffle] = useState([]);
+  const [difficulty, setDifficulty] = useState(12)
 
   useEffect(() => {
     setIsLoading(true);
 
-    const fetchData = async () => {
+    const fetchData = async (limit) => {
       try {
         const response = await fetch(
-          "https://pokeapi.co/api/v2/pokemon?limit=12"
-        );
+          `https://pokeapi.co/api/v2/pokemon?limit=${limit}`
+          );
+
         const data = await response.json();
 
         const formattedData = await Promise.all(
@@ -42,8 +45,8 @@ function App() {
       }
     };
 
-    fetchData();
-  }, []);
+    fetchData(difficulty);
+  }, [difficulty]);
 
 
 
@@ -74,6 +77,7 @@ function App() {
       setScore(0);
       setClickedCards([]);
       setShuffle(shuffleCards(pokemonData));   // Reshuffle after each reset
+      handleBestScore()
     } else {
       // Updating score by 1, Shuffling cards and setting the clicked state of new card
       setScore((prevScore) => prevScore + 1);
@@ -84,8 +88,17 @@ function App() {
 
 
  
+const handleBestScore = () => {
+  if (score > bestScore) {
+    setBestScore(score)
+  }  
+}
 
 
+const changeDifficulty = (limit) => {
+  // Updating the difficulty state, which will trigger the useEffect to fetch new data
+  setDifficulty(limit);
+};
   
 
   if (isLoading) {
@@ -99,13 +112,14 @@ function App() {
   return (
     <>
       <div className="px-10 py-0">
+        <Button difficulty="Easy" onClick={() => changeDifficulty(12)} />
+        <Button difficulty="Medium" onClick={() => changeDifficulty(16)} />
+        <Button difficulty="Hard" onClick={() => changeDifficulty(20)} />
         <h1 className="mb-2 font-rubik text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
           Memory Card Game
         </h1>
-        <div className="px-2 flex justify-center sm:mb-6">
-          <Scoreboard score={score} bestScore={bestScore} />
-        </div>
-        <div className="container mx-auto flex flex-wrap gap-5 basis-auto  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-7xl">
+        <Scoreboard score={score} bestScore={bestScore} />
+        <div className="container mx-auto flex flex-wrap gap-5 basis-auto  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
           {shuffle.map((pokemon) => (
             <Card
               key={pokemon.id}
