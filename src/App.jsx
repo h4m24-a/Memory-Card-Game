@@ -8,7 +8,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
-  // const [shuffle, setShuffle] = useState([]);
+  const [shuffle, setShuffle] = useState([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -34,6 +34,7 @@ function App() {
         );
 
         setPokemonData(formattedData);
+        setShuffle(formattedData);
       } catch (error) {
         console.error("Error fetching Pokemon data:", error);
       } finally {
@@ -46,11 +47,22 @@ function App() {
 
 
 
-  const shuffleCards = () => {
-    // Shuffles the pokemonData array
-    const shuffled = [...pokemonData].sort(() => Math.random() - 0.5);
-    setPokemonData(shuffled); // Updates the state with the shuffled array
-  };
+  const shuffleCards = (cards) => {
+    // Creating a copy of the original array to avoid modifying the input array
+    const shuffled = [...cards]
+
+    // Iterating over the array from the last element to first  // i-- decrements by 1
+    for (let i = shuffled.length -1; i > 0; i--) {
+        // Generating a random index from 0 to the current iteration index (inclusive)
+      const j = Math.floor(Math.random() * (i + 1));
+
+      // Swaping elements at indices i and j
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+
+    return shuffled
+
+  }
 
   
 
@@ -61,12 +73,12 @@ function App() {
       // Reset Game
       setScore(0);
       setClickedCards([]);
-      shuffleCards()
+      setShuffle(shuffleCards(pokemonData));   // Reshuffle after each reset
     } else {
       // Updating score by 1, Shuffling cards and setting the clicked state of new card
       setScore((prevScore) => prevScore + 1);
       setClickedCards((prevSelectedCard) => [...prevSelectedCard, cardId]);
-      shuffleCards()
+      setShuffle(shuffleCards(pokemonData));    // Reshuffle after each click
     }
   };
 
@@ -93,8 +105,8 @@ function App() {
         <div className="px-2 flex justify-center sm:mb-6">
           <Scoreboard score={score} bestScore={bestScore} />
         </div>
-        <div className="container mx-auto flex flex-wrap gap-4  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-7xl">
-          {pokemonData.map((pokemon) => (
+        <div className="container mx-auto flex flex-wrap gap-5 basis-auto  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-7xl">
+          {shuffle.map((pokemon) => (
             <Card
               key={pokemon.id}
               id={pokemon.id}
