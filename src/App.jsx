@@ -11,6 +11,7 @@ function App() {
   const [clickedCards, setClickedCards] = useState([]);
   const [shuffle, setShuffle] = useState([]);
   const [difficulty, setDifficulty] = useState(null)
+  const [modal, setModal] = useState(null)
 
   useEffect(() => {
     // Check if difficulty is selected before fetching data  -  Fetches data only when a difficulty is selected
@@ -103,24 +104,23 @@ const changeDifficulty = (limit) => {
   setDifficulty(limit);
   setScore(0)
   setClickedCards([])
-  
+  setModal(null)
 };
   
 
-
+const openModal = () => {
+  setModal(true);
+};
 
 if (!difficulty) {
   // Rendering difficulty selection screen
   return (
     <div className="flex flex-col items-center justify-center min-h-screen h-screen w-screen">
-      <p className=" font-poppins text-center text-2xl">
-        Memory Card Game
-      </p>
     <div className=" shadow-2xl rounded-xl border-red-600 p-16 flex h-dvh justify-center max-w-full text-xl items-center flex-col">
-    <img className="mt-4 w-12 h-12 lg:w-28 lg:h-28" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball" />
-      <p className="font-poppins mt-5 text-xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
+    <img className="w-12 h-12 lg:w-28 lg:h-28" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball" />
+      <button className="font-poppins mt-5 text-xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
         Select Difficulty
-      </p>
+      </button>
       <div className="flex mt-8 flex-col gap-5 md:flex-row">
         <Button difficulty="Easy" onClick={() => changeDifficulty(8)} />
         <Button difficulty="Medium" onClick={() => changeDifficulty(12)} />
@@ -147,18 +147,27 @@ if (!difficulty) {
           Memory Card Game
         </h1>
 
-        <div className="flex justify-center text-2xl items-center flex-col-reverse">
-          <p className="mb-4 mt-3 font-poppins text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
+        <div className="flex mx-auto justify-center items-center gap-5 mt-6 mb-6 max-w-full">
+          <button className=" font-poppins flex flex-row  bg-green-500 rounded-xl py-3 px-6" onClick={openModal}>
             Change Difficulty
-          </p>
+          </button>
+
+          <Scoreboard score={score} bestScore={bestScore} />
+        </div>
+
+      {modal && (
+        <div className="flex items-center justify-center">
+          <button type="button" onClick={() => setModal(null)} className="btn btn-info">
+            Close
+          </button>
           <div className="flex flex-row gap-5">
             <Button difficulty="Easy" onClick={() => changeDifficulty(8)} />
             <Button difficulty="Medium" onClick={() => changeDifficulty(12)} />
             <Button difficulty="Hard" onClick={() => changeDifficulty(16)} />
           </div>
         </div>
+      )}
 
-        <Scoreboard score={score} bestScore={bestScore} />
 
         <div className="container mx-auto flex flex-wrap gap-5  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
           {shuffle.map((pokemon) => (
