@@ -10,9 +10,11 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
   const [clickedCards, setClickedCards] = useState([]);
   const [shuffle, setShuffle] = useState([]);
-  const [difficulty, setDifficulty] = useState(12)
+  const [difficulty, setDifficulty] = useState(null)
 
   useEffect(() => {
+    // Check if difficulty is selected before fetching data  -  Fetches data only when a difficulty is selected
+    if (difficulty) {
     setIsLoading(true);
 
     const fetchData = async (limit) => {
@@ -45,7 +47,8 @@ function App() {
       }
     };
 
-    fetchData(difficulty);
+    fetchData(difficulty); 
+    }
   }, [difficulty]);
 
 
@@ -98,8 +101,36 @@ const handleBestScore = () => {
 const changeDifficulty = (limit) => {
   // Updating the difficulty state, which will trigger the useEffect to fetch new data
   setDifficulty(limit);
+  setScore(0)
+  setClickedCards([])
+  
 };
   
+
+
+
+if (!difficulty) {
+  // Rendering difficulty selection screen
+  return (
+    <div className="flex items-center justify-center min-h-screen h-screen w-screen">
+    <div className=" shadow-2xl rounded-xl border-red-600 p-20 flex h-dvh justify-center max-w-full text-xl items-center flex-col">
+      <p className="">
+        Memory Card Game
+      </p>
+    <img className="w-12 h-12 lg:w-28 lg:h-28" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball" />
+      <p className="font-poppins mt-4 text-xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
+        Select Difficulty
+      </p>
+      <div className="flex mt-6 flex-col gap-5 md:flex-row">
+        <Button difficulty="Easy" onClick={() => changeDifficulty(8)} />
+        <Button difficulty="Medium" onClick={() => changeDifficulty(12)} />
+        <Button difficulty="Hard" onClick={() => changeDifficulty(16)} />
+      </div>
+    </div>
+  </div>
+  
+  );
+}
 
   if (isLoading) {
     return <div className="flex justify-center text-2xl items-center flex-col-reverse"> Loading...
@@ -111,15 +142,25 @@ const changeDifficulty = (limit) => {
 
   return (
     <>
-      <div className="px-10 py-0">
-        <Button difficulty="Easy" onClick={() => changeDifficulty(12)} />
-        <Button difficulty="Medium" onClick={() => changeDifficulty(16)} />
-        <Button difficulty="Hard" onClick={() => changeDifficulty(20)} />
-        <h1 className="mb-2 font-rubik text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+      <div className="px-2 py-2">
+        <h1 className="mb-2 font-rubik text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
           Memory Card Game
         </h1>
+
+        <div className="flex justify-center text-2xl items-center flex-col-reverse">
+          <p className="mb-4 mt-3 font-poppins text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
+            Change Difficulty
+          </p>
+          <div className="flex flex-row gap-5">
+            <Button difficulty="Easy" onClick={() => changeDifficulty(8)} />
+            <Button difficulty="Medium" onClick={() => changeDifficulty(12)} />
+            <Button difficulty="Hard" onClick={() => changeDifficulty(16)} />
+          </div>
+        </div>
+
         <Scoreboard score={score} bestScore={bestScore} />
-        <div className="container mx-auto flex flex-wrap gap-5 basis-auto  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
+
+        <div className="container mx-auto flex flex-wrap gap-2  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
           {shuffle.map((pokemon) => (
             <Card
               key={pokemon.id}
