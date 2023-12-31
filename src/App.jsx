@@ -116,15 +116,18 @@ if (!difficulty) {
   // Rendering difficulty selection screen
   return (
     <div className="flex flex-col items-center justify-center min-h-screen h-screen w-screen">
-    <div className=" shadow-2xl rounded-xl border-red-600 p-16 flex h-dvh justify-center max-w-full text-xl items-center flex-col">
-    <img className="w-12 h-12 lg:w-28 lg:h-28" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball" />
+       <h1 className="mb-10 font-rubik text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
+          Memory Card Game
+        </h1>
+    <div className=" shadow-2xl rounded-xl border-red-600 p-14 flex h-dvh justify-center max-w-full text-xl items-center flex-col">
+    <img className="w-12 h-12 lg:w-32 lg:h-32" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball" />
       <button className="font-poppins mt-5 text-xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
         Select Difficulty
       </button>
       <div className="flex mt-8 flex-col gap-5 md:flex-row">
-        <Button difficulty="Easy" onClick={() => changeDifficulty(8)} />
-        <Button difficulty="Medium" onClick={() => changeDifficulty(12)} />
-        <Button difficulty="Hard" onClick={() => changeDifficulty(16)} />
+        <Button btnClass="btn" btnSize="btn-lg" btnLink="btn-primary" btnActive="btn-active" difficulty="Easy" onClick={() => changeDifficulty(8)} />
+         <Button btnClass="btn" btnSize="btn-lg" btnLink="btn-primary" btnActive="btn-active" difficulty="Medium" onClick={() => changeDifficulty(12)} />
+         <Button btnClass="btn" btnSize="btn-lg" btnLink="btn-primary" btnActive="btn-active" difficulty="Hard" onClick={() => changeDifficulty(14)} />
       </div>
     </div>
   </div>
@@ -156,20 +159,21 @@ if (!difficulty) {
         </div>
 
       {modal && (
-        <div className="flex items-center justify-center">
-          <button type="button" onClick={() => setModal(null)} className="btn btn-info">
-            Close
+        <div className="flex gap-5 items-center justify-center">
+          <button onClick={() => setModal(null)} className="btn btn-square btn-outline">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
-          <div className="flex flex-row gap-5">
+          
+          <div className="flex flex-row gap-5 font-poppins">
             <Button difficulty="Easy" onClick={() => changeDifficulty(8)} />
             <Button difficulty="Medium" onClick={() => changeDifficulty(12)} />
-            <Button difficulty="Hard" onClick={() => changeDifficulty(16)} />
+            <Button difficulty="Hard" onClick={() => changeDifficulty(14)} />
           </div>
         </div>
       )}
 
 
-        <div className="container mx-auto flex flex-wrap gap-5  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
+        <div className="container mx-auto flex flex-wrap gap-5 mt-2 justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
           {shuffle.map((pokemon) => (
             <Card
               key={pokemon.id}
