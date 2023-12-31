@@ -112,16 +112,16 @@ const changeDifficulty = (limit) => {
 if (!difficulty) {
   // Rendering difficulty selection screen
   return (
-    <div className="flex items-center justify-center min-h-screen h-screen w-screen">
-    <div className=" shadow-2xl rounded-xl border-red-600 p-20 flex h-dvh justify-center max-w-full text-xl items-center flex-col">
-      <p className="">
+    <div className="flex flex-col items-center justify-center min-h-screen h-screen w-screen">
+      <p className=" font-poppins text-center text-2xl">
         Memory Card Game
       </p>
-    <img className="w-12 h-12 lg:w-28 lg:h-28" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball" />
-      <p className="font-poppins mt-4 text-xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
+    <div className=" shadow-2xl rounded-xl border-red-600 p-16 flex h-dvh justify-center max-w-full text-xl items-center flex-col">
+    <img className="mt-4 w-12 h-12 lg:w-28 lg:h-28" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball" />
+      <p className="font-poppins mt-5 text-xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
         Select Difficulty
       </p>
-      <div className="flex mt-6 flex-col gap-5 md:flex-row">
+      <div className="flex mt-8 flex-col gap-5 md:flex-row">
         <Button difficulty="Easy" onClick={() => changeDifficulty(8)} />
         <Button difficulty="Medium" onClick={() => changeDifficulty(12)} />
         <Button difficulty="Hard" onClick={() => changeDifficulty(16)} />
@@ -160,7 +160,7 @@ if (!difficulty) {
 
         <Scoreboard score={score} bestScore={bestScore} />
 
-        <div className="container mx-auto flex flex-wrap gap-2  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
+        <div className="container mx-auto flex flex-wrap gap-5  justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
           {shuffle.map((pokemon) => (
             <Card
               key={pokemon.id}

@@ -2,13 +2,12 @@ import PropTypes from "prop-types";
 
 const Button = ( {difficulty, onClick} ) => {
   return (
-    <button onClick={onClick}>{difficulty}</button>
+    <button className="btn btn-lg btn-active btn-primary" onClick={onClick}>{difficulty}</button>
   )
 }
 
 Button.propTypes = {
     difficulty: PropTypes.string.isRequired,
-    limit: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired
   };
 
