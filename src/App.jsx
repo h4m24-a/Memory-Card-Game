@@ -112,36 +112,36 @@ const openModal = () => {
   setModal(true);
 };
 
+
+if (isLoading) {
+  return <div className="flex justify-center text-2xl items-center flex-col-reverse"> Loading...
+    <div className="flex justify-center w-16 h-16 border-4 border-dashed rounded-full animate-spin border-violet-400"></div>;
+  </div>
+}
+
+
 if (!difficulty) {
   // Rendering difficulty selection screen
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen h-screen w-screen">
-       <h1 className="mb-10 font-rubik text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
-          Memory Card Game
-        </h1>
+  <div className="flex flex-col items-center justify-center min-h-screen h-screen w-screen">
+      <h1 className="mb-10 font-rubik text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
+        Memory Card Game
+      </h1>
     <div className=" shadow-2xl rounded-xl border-red-600 p-14 flex h-dvh justify-center max-w-full text-xl items-center flex-col">
-    <img className="w-12 h-12 lg:w-32 lg:h-32" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball" />
-      <button className="font-poppins mt-5 text-xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
-        Select Difficulty
-      </button>
+        <img className="w-12 h-12 md:h-28  md:w-28 lg:w-32 lg:h-32" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball" />
+        <button className="font-poppins mt-5 text-xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">
+          Select Difficulty
+        </button>
       <div className="flex mt-8 flex-col gap-5 md:flex-row">
         <Button btnClass="btn" btnSize="btn-lg" btnLink="btn-primary" btnActive="btn-active" difficulty="Easy" onClick={() => changeDifficulty(8)} />
-         <Button btnClass="btn" btnSize="btn-lg" btnLink="btn-primary" btnActive="btn-active" difficulty="Medium" onClick={() => changeDifficulty(12)} />
-         <Button btnClass="btn" btnSize="btn-lg" btnLink="btn-primary" btnActive="btn-active" difficulty="Hard" onClick={() => changeDifficulty(14)} />
+        <Button btnClass="btn" btnSize="btn-lg" btnLink="btn-primary" btnActive="btn-active" difficulty="Medium" onClick={() => changeDifficulty(12)} />
+        <Button btnClass="btn" btnSize="btn-lg" btnLink="btn-primary" btnActive="btn-active" difficulty="Hard" onClick={() => changeDifficulty(14)} />
       </div>
     </div>
   </div>
   
   );
 }
-
-  if (isLoading) {
-    return <div className="flex justify-center text-2xl items-center flex-col-reverse"> Loading...
-      <div className="flex justify-center w-16 h-16 border-4 border-dashed rounded-full animate-spin border-violet-400"></div>;
-    </div>
-  }
-
-
 
   return (
     <>
@@ -150,7 +150,7 @@ if (!difficulty) {
           Memory Card Game
         </h1>
 
-        <div className="flex mx-auto justify-center items-center gap-5 mt-6 mb-6 max-w-full">
+        <div className="flex mx-auto flex-col justify-center items-center gap-5 mt-6 mb-6 max-w-full md:flex-row">
           <button className=" font-poppins flex flex-row  bg-green-500 rounded-xl py-3 px-6" onClick={openModal}>
             Change Difficulty
           </button>
@@ -159,12 +159,12 @@ if (!difficulty) {
         </div>
 
       {modal && (
-        <div className="flex gap-5 items-center justify-center">
+        <div className="flex gap-5 flex-col items-center justify-center md:flex-row">
           <button onClick={() => setModal(null)} className="btn btn-square btn-outline">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
           </button>
           
-          <div className="flex flex-row gap-5 font-poppins">
+          <div className="flex flex-col gap-5 font-poppins md:flex-row">
             <Button difficulty="Easy" onClick={() => changeDifficulty(8)} />
             <Button difficulty="Medium" onClick={() => changeDifficulty(12)} />
             <Button difficulty="Hard" onClick={() => changeDifficulty(14)} />
