@@ -219,7 +219,7 @@ function App() {
               name={pokemon.name}
               image={pokemon.image}
               onClick={() => handleCardClick(pokemon.id)}
-                disabled={score >= difficulty}
+                disableCard={score >= difficulty}
             />
           ))}
         </div>
