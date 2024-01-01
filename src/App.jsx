@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
 import Button from "./components/Button";
+import WinGame from "./components/WinGame";
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
@@ -82,23 +83,19 @@ function App() {
       setScore(0);
       setClickedCards([]);
       setShuffle(shuffleCards(pokemonData)); // Reshuffle after each reset
-      handleBestScore();
+      setScore(0);
     } else {
       // Updating score by 1, Shuffling cards and setting the clicked state of new card
       setScore((prevScore) => prevScore + 1);
       setClickedCards((prevSelectedCard) => [...prevSelectedCard, cardId]);
       setShuffle(shuffleCards(pokemonData)); // Reshuffle after each click
+      if (score + 1 >= bestScore) {
+        setBestScore(score + 1);
+      }
     }
   };
 
 
-
-
-  const handleBestScore = () => {
-    if (score > bestScore) {
-      setBestScore(score);
-    }
-  };
 
 
 
@@ -140,7 +137,7 @@ function App() {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen h-screen w-screen">
         <h1 className="mb-10 font-rubik text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">Memory Card Game</h1>
-        <div className=" shadow-2xl rounded-xl border-red-600 p-14 flex h-dvh justify-center max-w-full text-xl items-center flex-col">
+        <div className="flex flex-col justify-center items-center text-xl h-dvh shadow-2xl rounded-xl p-14 max-w-full">
           <img className="w-12 h-12 md:h-28  md:w-28 lg:w-32 lg:h-32" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball"
           />
           <button className="font-poppins mt-5 text-xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">Select Difficulty</button>
@@ -178,7 +175,6 @@ function App() {
             onClick={openModal}>
             Change Difficulty
           </button>
-
           <Scoreboard score={score} bestScore={bestScore} />
         </div>
 
@@ -223,6 +219,7 @@ function App() {
             />
           ))}
         </div>
+        {score === difficulty && <WinGame score={score} />}
       </div>
     </>
   );
