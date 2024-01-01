@@ -14,6 +14,7 @@ function App() {
   const [shuffle, setShuffle] = useState([]);
   const [difficulty, setDifficulty] = useState(null);
   const [modal, setModal] = useState(null);
+  const [gameWon, setGameWon] = useState(false)
 
   useEffect(() => {
     // Check if difficulty is selected before fetching data  -  Fetches data only when a difficulty is selected
@@ -208,6 +209,8 @@ function App() {
           </div>
         )}
 
+        {score === difficulty && <WinGame  score={score} />}
+
         <div className="container mx-auto flex flex-wrap gap-5 mt-2 justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
           {shuffle.map((pokemon) => (
             <Card
@@ -216,10 +219,10 @@ function App() {
               name={pokemon.name}
               image={pokemon.image}
               onClick={() => handleCardClick(pokemon.id)}
+                disabled={score >= difficulty}
             />
           ))}
         </div>
-        {score === difficulty && <WinGame score={score} />}
       </div>
     </>
   );
