@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
 
-const Card = ({ id, name, image, onClick, disableCard}) => {
+const Card = ({ id, name, image, onClick}) => {
   return (
-    <div key={id} onClick={() => (disableCard ? null : onClick())} className="px-6 py-12 flex flex-col justify-center items-center rounded-lg shadow-xl cursor-pointer focus:bg-blue-500 focus:outline-none active:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 lg:flex-shrink">
+    <div key={id} onClick={onClick} className="px-6 py-12 flex flex-col justify-center items-center rounded-lg shadow-xl cursor-pointer focus:bg-blue-500 focus:outline-none active:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 lg:flex-shrink">
       <img
         src={image}
         alt={name}
@@ -19,8 +19,7 @@ Card.propTypes = {
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-  disableCard: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired
 };
 
 export default Card;

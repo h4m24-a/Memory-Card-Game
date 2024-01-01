@@ -14,7 +14,7 @@ function App() {
   const [shuffle, setShuffle] = useState([]);
   const [difficulty, setDifficulty] = useState(null);
   const [modal, setModal] = useState(null);
-  const [gameWon, setGameWon] = useState(false)
+  const [GameWon, setGameWon] = useState(false);
 
   useEffect(() => {
     // Check if difficulty is selected before fetching data  -  Fetches data only when a difficulty is selected
@@ -100,8 +100,6 @@ function App() {
 
 
 
-
-
   const changeDifficulty = (limit) => {
     // Updating the difficulty state, which will trigger the useEffect to fetch new data
     setDifficulty(limit);
@@ -112,12 +110,29 @@ function App() {
 
 
 
+
+
   const openModal = () => {
     setModal(true);
   };
 
 
 
+
+// Disables cards after game is won.
+  useEffect(() => {
+    if (score === difficulty) {
+      setGameWon(true);
+    }
+  }, [score, difficulty]);
+
+
+  const restartGame = () => {
+    setScore(0);
+    setClickedCards([]);
+    shuffleCards([]);
+    setGameWon(false);
+  };
 
 
   if (isLoading) {
@@ -209,7 +224,7 @@ function App() {
           </div>
         )}
 
-        {score === difficulty && <WinGame  score={score} />}
+        {score === difficulty && <WinGame onClick={() => restartGame()}  score={score} />}
 
         <div className="container mx-auto flex flex-wrap gap-5 mt-2 justify-center items-center  sm:max-w-xl md:max-w-lg lg:max-w-full">
           {shuffle.map((pokemon) => (
@@ -218,8 +233,7 @@ function App() {
               id={pokemon.id}
               name={pokemon.name}
               image={pokemon.image}
-              onClick={() => handleCardClick(pokemon.id)}
-                disableCard={score >= difficulty}
+              onClick={() => (GameWon ? null : handleCardClick(pokemon.id))}
             />
           ))}
         </div>

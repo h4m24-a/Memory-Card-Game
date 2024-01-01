@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const WinGame = ( {score} ) => {
+const WinGame = ( {score, onClick} ) => {
   return (
     <div
       id="alert-additional-content-3"
@@ -19,6 +19,7 @@ const WinGame = ( {score} ) => {
       <div className="flex">
         <button
           type="button"
+          onClick={onClick}
           className="text-white bg-green-800 hover:bg-green-900 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs px-3 py-1.5 me-2 text-center inline-flex items-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
         >
           <svg
@@ -38,7 +39,9 @@ const WinGame = ( {score} ) => {
 };
 
 WinGame.propTypes = {
-  score: PropTypes.number.isRequired
+  score: PropTypes.number.isRequired,
+  shuffle: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired
 };
 
 export default WinGame;
