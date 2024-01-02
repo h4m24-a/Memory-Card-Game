@@ -14,7 +14,7 @@ const WinGame = ( {score, onClick} ) => {
         <h3 className="text-lg font-poppins font-medium ml-2 md:text-2xl">You Win!</h3>
       </div>
       <div className="mt-2 mb-4 font-poppins text-sm md:text-lg">
-      Congratulations! Your memory skills are unbeatable –  – you have flawlessly chosen {score} cards!
+      Congratulations! Your memory skills are unbeatable – you have flawlessly chosen <span className="font-bold">{score}</span> cards!
       </div>
       <div className="flex">
         <button
