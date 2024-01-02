@@ -153,11 +153,11 @@ function App() {
     // Rendering difficulty selection screen when falsy
     return (
       <div className="flex flex-col items-center justify-center min-h-screen h-screen w-screen">
-        <h1 className="mb-10 font-rubik text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">Memory Card Game</h1>
-        <div className="flex flex-col justify-center items-center text-xl h-dvh shadow-2xl rounded-xl p-14 max-w-full">
-          <img className="w-12 h-12 md:h-28  md:w-28 lg:w-32 lg:h-32" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball"
+        <div className="flex flex-col justify-center items-center text-xl h-dvh shadow-2xl rounded-xl py-10 px-20 max-w-full bg-[url('./src/assets/pokemon-background.jpg')]">
+        <h1 className=" font-rubik text-4xl text-center font-extrabold text-black md:text-5xl lg:text-6xl ">Memory Card Game</h1>
+          <img className="mt-3 w-12 h-12 md:h-28  md:w-28 lg:w-32 lg:h-32" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball"
           />
-          <button className="font-poppins mt-5 text-xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">Select Difficulty</button>
+          <button className="font-poppins mt-16 text-xl text-center  font-black text-black md:text-5xl lg:text-6xl ">Select Difficulty</button>
           <div className="flex mt-8 flex-col gap-5 md:flex-row">
             <Button
               btnClass="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 lg:text-xl"
@@ -185,8 +185,8 @@ function App() {
 
   return (
     <>
-      <div className="px-2 py-2">
-        <h1 className="mb-2 font-rubik text-4xl text-center font-extrabold text-gray-900 md:text-5xl lg:text-6xl ">Memory Card Game</h1>
+      <div className=" py-2">
+        <h1 className="mb-2 px-0 py-3 bg-black text-white font-rubik text-4xl text-center font-extrabold md:text-5xl lg:text-6xl ">Memory Card Game</h1>
 
         <div className="flex mx-auto flex-col justify-center items-center gap-5 mt-6 mb-6 max-w-full md:flex-row">
           <button className=" font-poppins flex flex-row  bg-green-500 rounded-xl py-3 px-6"

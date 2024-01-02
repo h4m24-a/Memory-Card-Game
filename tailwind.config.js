@@ -9,7 +9,11 @@ export default {
       rubik: ['Rubik Doodle Shadow', 'sans-serif'],
       pokemonFont: ['Pokemon Solid', 'sans-serif']
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'pokemon-background': "url('./src/assets/pokemon-background.jpg')"
+      }
+    },
   },
   // eslint-disable-next-line no-undef
   plugins: [require("daisyui")],
