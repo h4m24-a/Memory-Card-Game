@@ -4,6 +4,7 @@ import Card from "./components/Card";
 import Scoreboard from "./components/Scoreboard";
 import Button from "./components/Button";
 import WinGame from "./components/WinGame";
+import Rules from "./components/Rules";
 
 function App() {
   const [pokemonData, setPokemonData] = useState([]);
@@ -174,6 +175,7 @@ function App() {
               onClick={() => changeDifficulty(14)}
             />
           </div>
+        <Rules />
         </div>
       </div>
     );
