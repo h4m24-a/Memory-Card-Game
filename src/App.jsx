@@ -155,7 +155,7 @@ function App() {
       <div className="flex flex-col items-center justify-center min-h-screen h-screen w-screen">
         <div className="flex flex-col justify-center items-center text-xl h-dvh shadow-2xl rounded-xl py-10 px-24 max-w-full bg-[url('./src/assets/pokemon-background.jpg')]">
         <h1 className=" font-rubik text-4xl text-center font-extrabold text-black md:text-5xl lg:text-6xl ">Memory Card Game</h1>
-          <img className="mt-3 w-12 h-12 md:h-28  md:w-28 lg:w-32 lg:h-32" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball"
+          <img className="mt-3 w-12 h-12 md:h-28  md:w-28 lg:w-32 lg:h-32" src="../src/assets/poke-ball-icon.svg" alt="Pokemon Ball"
           />
           <button className="font-poppins mt-16 text-xl text-center  font-black text-black md:text-5xl lg:text-6xl ">Select Difficulty</button>
           <div className="flex mt-8 flex-col gap-5 md:flex-row">
