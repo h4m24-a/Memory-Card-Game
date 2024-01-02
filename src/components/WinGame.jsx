@@ -8,7 +8,7 @@ const WinGame = ( {score, onClick} ) => {
       role="alert"
     >
       <div className="flex items-center">
-      <img className="w-8 h-8 md:h-12  md:w-12 lg:w-16 lg:h-16" src="./src/assets/poke-ball-icon.svg" alt="Pokemon Ball"
+      <img className="w-8 h-8 md:h-12  md:w-12 lg:w-16 lg:h-16" src="/images/poke-ball-icon.svg" alt="Pokemon Ball"
           />
         <span className="sr-only">Info</span>
         <h3 className="text-lg font-poppins font-medium ml-2 md:text-2xl">You Win!</h3>
