@@ -1,8 +1,42 @@
-# React + Vite
+# Memory Card Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### View Project : 
 
-Currently, two official plugins are available:
+- Vite 
+- React
+- Tailwind
+- PokeAPI
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Features
+
+- Win by selecting a card once
+- Select difficulty
+- As you select a higher difficulty level, the number of cards increases
+- Responsive
+- Fetching data such as images, name & ID from PokeAPI
+- Used Tailwind and DaisyUI for the UI
+- More practice with hooks like State and Effect
+- Save best score
+
+
+
+
+## Install project dependencies
+
+
+
+```
+  npm install
+```
+
+
+## Running development server
+```
+ npm run dev
+```
+
+## Building for production
+```
+ npm run build
+```
