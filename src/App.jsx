@@ -15,7 +15,7 @@ function App() {
   const [shuffle, setShuffle] = useState([]);
   const [difficulty, setDifficulty] = useState(null);
   const [modal, setModal] = useState(null);
-  const [GameWon, setGameWon] = useState(false);
+  const [gameWon, setGameWon] = useState(false);
 
   useEffect(() => {
     // Check if difficulty is selected before fetching data  -  Fetches data only when a difficulty is selected
@@ -85,7 +85,6 @@ function App() {
       setScore(0);
       setClickedCards([]);
       setShuffle(shuffleCards(pokemonData)); // Reshuffle after each reset
-      setScore(0);
     } else {
       // Updating score by 1, Shuffling cards and setting the clicked state of new card
       setScore((prevScore) => prevScore + 1);
@@ -222,7 +221,7 @@ function App() {
               id={pokemon.id}
               name={pokemon.name}
               image={pokemon.image}
-              onClick={() => (GameWon ? null : handleCardClick(pokemon.id))}
+              onClick={() => (gameWon ? null : handleCardClick(pokemon.id))}
             />
           ))}
         </div>
