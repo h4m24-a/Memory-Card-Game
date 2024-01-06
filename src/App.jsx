@@ -151,13 +151,13 @@ function App() {
   if (!difficulty) {
     // Rendering difficulty selection screen when falsy
     return (
-      <div className="flex flex-col items-center justify-center min-h-screen h-screen w-screen">
-        <div className="flex flex-col justify-center items-center text-xl h-dvh shadow-2xl rounded-xl py-10 px-24 max-w-full bg-[url('/images/pokemon-background.jpg')]">
-        <h1 className=" font-rubik text-4xl text-center font-extrabold text-black md:text-5xl lg:text-6xl ">Memory Card Game</h1>
-          <img className="mt-3 w-12 h-12 md:h-28  md:w-28 lg:w-32 lg:h-32" src="/images/poke-ball-icon.svg" alt="Pokemon Ball"
+      <div className="flex justify-center min-h-screen h-screen w-screen md:flex-col items-center">
+        <div className="flex flex-col justify-center items-center text-xl h-dvh shadow-2xl py-10 px-24 max-w-full bg-[url('/images/pokemon-background.jpg')] md:rounded-xl">
+        <h1 className=" font-rubik mt-8 text-2xl text-center font-extrabold text-black md:text-5xl lg:text-6xl ">Memory Card Game</h1>
+          <img className="mt-3 w-14 h-14 md:h-28  md:w-28 lg:w-32 lg:h-32" src="/images/poke-ball-icon.svg" alt="Pokemon Ball"
           />
-          <button className="font-poppins mt-16 text-xl text-center  font-black text-black md:text-5xl lg:text-6xl ">Select Difficulty</button>
-          <div className="flex mt-8 flex-col gap-5 md:flex-row">
+          <button className="font-poppins mt-10 text-2xl text-center  font-black text-black md:text-5xl lg:text-6xl ">Select Difficulty</button>
+          <div className="flex mt-4 flex-col gap-5 md:flex-row">
             <Button
               btnClass="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 lg:text-xl"
               difficulty="Easy"
